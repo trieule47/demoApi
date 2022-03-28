@@ -10,18 +10,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class Users {
-    @Id
-    @GeneratedValue( strategy = GenerationType.AUTO)  
+    @Id//primary key
+    @GeneratedValue( strategy = GenerationType.AUTO)  //auto increment id
     private Long id;
     
-    //
+    
     @Column(name="name", nullable=false)
     private String name;
+
     @Column(name="age", nullable=false)
     private String age;
 
     public Users() {
     }
+    
     public Users(String name, String age) {
         this.name = name;
         this.age = age;

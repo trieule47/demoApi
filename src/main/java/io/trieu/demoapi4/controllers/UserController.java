@@ -25,11 +25,13 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
+    //get all user
     @GetMapping("")
     List<Users> findAll(){
         return repository.findAll();
     }
 
+    //get user by id
     @GetMapping("/{id}")
     ResponseEntity<ResponseObject> findById(@PathVariable Long id){
         Optional<Users> foundProduct = repository.findById(id);
@@ -44,6 +46,7 @@ public class UserController {
         }
     }
     
+    //insert user
     @PostMapping("/insert")
     ResponseEntity<ResponseObject> InsertUser(@RequestBody Users newUser){
         Optional<Users> foundProduct = repository.findByName(newUser.getName().trim());
@@ -58,6 +61,7 @@ public class UserController {
         }
     }
 
+    //update user
     @PutMapping("/{id}")
     ResponseEntity<ResponseObject> UpdateUser(@PathVariable Long id, @RequestBody Users newUser){
         Users updateUser = repository.findById(id)
@@ -74,6 +78,7 @@ public class UserController {
         );
     }
 
+    //delete user
     @DeleteMapping("/{id}")
     ResponseEntity<ResponseObject> DeleteUser(@PathVariable Long id){
         Optional<Users> deleteUser = repository.findById(id);
